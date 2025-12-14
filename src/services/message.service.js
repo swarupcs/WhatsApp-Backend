@@ -20,7 +20,7 @@ export const populateMessage = async (id) => {
       model: 'ConversationModel',
       populate: {
         path: 'users',
-        select: 'name email picture status',
+        select: 'name picture isGroup users',
         model: 'UserModel',
       },
     });
