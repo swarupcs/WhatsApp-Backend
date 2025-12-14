@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { Server } from 'socket.io';
 import app from './app.js';
 import logger from './configs/logger.config.js';
+import SocketServer from './SocketServer.js';
 
 //env variables
 const { DATABASE_URL } = process.env;
@@ -41,8 +42,9 @@ const io = new Server(server, {
     origin: process.env.CLIENT_ENDPOINT,
   },
 });
-io.on("connection", (socket) => {
-  logger.info("socket io connected successfully.");
+io.on('connection', (socket) => {
+  logger.info('socket io connected successfully.');
+  SocketServer(socket, io);
 });
 
 const exitHandler = () => {
