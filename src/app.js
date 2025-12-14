@@ -49,6 +49,10 @@ app.use(
 //cors
 app.use(cors());
 
+app.use("/test", (req, res) => {
+  res.send("Server is up and running...");
+});
+
 // app.post('/test', (req, res) => {
 //   // res.send(req.body);
 //   throw createHttpError.BadRequest('this route has an error');
